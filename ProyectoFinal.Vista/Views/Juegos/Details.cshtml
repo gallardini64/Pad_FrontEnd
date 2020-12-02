@@ -1,0 +1,41 @@
+﻿@model ProyectoFinal.Vista.juegos
+
+@{
+    ViewBag.Title = "Detalles";
+    juegos juego = ViewData["juego"] as juegos;
+}
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/StyleSheet1.css" rel="stylesheet" />
+
+
+<div class="alert alert-primary" role="alert">
+    <strong>Detalles</strong>
+</div>
+
+
+                
+                <hr />
+
+                <div class="media" style="background-color:black; opacity:0.9; border-color:aliceblue; width:600px; align-content:center; margin-left:450px">
+                    <img src="@juego.imagen" class="mr-3" alt="..." style="width: 300px; height : 400px; margin:10px; ">
+                    <div class="media-body">
+                        <hr />
+                        <h4 style="color:aliceblue">Titulo: <span class="badge badge-secondary">@juego.titulo</span></h4>
+                        <h5 style="color:aliceblue">Desarrollador:<span class="badge badge-secondary">@juego.dessarrollador_nombre</span></h5>
+                        <h5 style="color:aliceblue">Genero:<span class="badge badge-secondary">@juego.genero_nombre</span></h5>
+                        <h5 style="color:aliceblue">Distribuidor:<span class="badge badge-secondary">@juego.distribudor_nombre</span></h5>
+                    </div>
+                </div>
+        
+
+
+<div class="container">
+   
+    <!--
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ })
+        -->
+
+    <input type="button" class="btn btn-dark" value="Volver al Menú Principal" style="margin-left: 50%;transform: translateX(-50%);" onclick="location.href = '@Url.Action("Index","juegos")';" />
+    
+</div>

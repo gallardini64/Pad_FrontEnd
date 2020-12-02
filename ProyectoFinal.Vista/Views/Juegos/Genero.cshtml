@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Genero";
+    string titulo = ViewData["titulo"] as string;
+}
+
+
+
+<h2 style="color:aliceblue">Genero:<span class="badge badge-secondary">@titulo</span></h2>
+
+@foreach (var juego in ViewData["juegos"] as IList<juegos>)
+{
+    <div class="card" style="margin: 10px;border:1px solid #FF9311">
+        <img src=@juego.imagen class="card-img-top" style="width:329px; height:340px" alt="...">
+        <div class="card-body" style="background-color:#1E253A;">
+            <h5 class="card-title" style="color:aliceblue">@juego.titulo</h5>
+            <p class="card-text" style="color:aliceblue">Fecha de lanzamiento: @juego.fecha_lanzamiento.ToString("dd/MM/yyyy")</p>
+            <input type="button" class="btn btn-primary" value="Detalles" onclick="location.href = '@Url.Action("Details","juegos",new { id = juego.juego_id})';" />
+        </div>
+    </div>
+}
+
+<div class="container">
+    <input type="button" class="btn btn-primary" value="Volver" onclick="location.href = '@Url.Action("Index","juegos")';" />
+</div>
+

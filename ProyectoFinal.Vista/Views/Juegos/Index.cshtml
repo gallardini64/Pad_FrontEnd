@@ -1,0 +1,74 @@
+﻿
+@model ProyectoFinal.Vista.juegos
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/StyleSheet1.css" rel="stylesheet" />
+
+
+
+@foreach (var juego in ViewData["juegos"] as IList<juegos>)
+{
+    <div class="card" style="margin: 10px;border:1px solid #FF9311; margin-top: 30px">
+        <img src=@juego.imagen class="card-img-top" style="width:329px; height:340px" alt="...">
+        <div class="card-body" style="background-color:#1E253A;">
+            <h5 class="card-title" style="color:aliceblue">@juego.titulo</h5>
+            <p class="card-text" style="color:aliceblue">Fecha de lanzamiento: @juego.fecha_lanzamiento.ToString("dd/MM/yyyy")</p>
+            <input type="button" class="btn btn-primary" value="Detalles" onclick="location.href = '@Url.Action("Details","juegos",new { id = juego.juego_id})';" />
+        </div>
+    </div>
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-1">
+            <span class="badge badge-pill badge-light" style="font-size:medium" >Generos</span>
+            <h1></h1>
+            @{
+                foreach (var genero in ViewData["generos"] as IList<generos>)
+                {
+                    <a href="#" class="badge badge-dark" onclick="location.href = '@Url.Action("Genero","juegos",new { id = genero.genero_id , titulo = genero.genero_descripcion})';">
+                        @genero.genero_descripcion
+                    </a>
+                }
+            }
+        </div>
+        <div class="col-2">
+            <span class="badge badge-pill badge-light" style="font-size:medium">Desarrolladores</span>
+            <h1></h1>
+            @{
+                foreach (var desarrollador in ViewData["desarrolladores"] as IList<desarrolladores>)
+                {
+                    <a href="#" class="badge badge-dark" onclick="location.href = '@Url.Action("Desarrollador","juegos",new { id = desarrollador.desarrollador_id , titulo = desarrollador.desarrollador_razonsocial})';">
+                        @desarrollador.desarrollador_razonsocial
+                    </a>
+                }
+            }
+        </div>
+        <div class="col-2">
+            <span class="badge badge-pill badge-light" style="font-size:medium">Distribuidores</span>
+            <h1></h1>
+            @{
+                foreach (var distribudor in ViewData["distribuidores"] as IList<distribudores>)
+                {
+                    <a href="#" class="badge badge-dark" onclick="location.href = '@Url.Action("Distribuidor","juegos",new { id = distribudor.distribuidor_id , titulo = distribudor.distribuidor_razonsocial})';">
+                    @distribudor.distribuidor_razonsocial</a>
+                }
+            }
+        </div>
+    </div>
+</div>
+
+<script src="~/Content/bootstrap.bundle.min.js"></script>
+<script src="~/Content/bootstrap.min.js"></script>
+
+
+
+
+
+
